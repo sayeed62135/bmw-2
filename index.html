@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Motors — BMW Bangladesh</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400&family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --color-obsidian: #050505;
+            --color-charcoal: #0D0D0D;
+            --color-pearl: #FDFCF8;
+            --color-gold: #C9A961;
+            --color-silver: #B8B8B8;
+            --color-bronze: #8B7355;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--color-obsidian);
+            color: var(--color-pearl);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .font-bodoni {
+            font-family: 'Bodoni Moda', serif;
+        }
+        
+        .font-garamond {
+            font-family: 'EB Garamond', serif;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: var(--color-obsidian);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--color-gold), var(--color-bronze));
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-gold);
+        }
+        
+        /* PRELOADER STYLES */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-obsidian);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loader-line {
+            width: 0%;
+            height: 2px;
+            background: var(--color-gold);
+            margin-top: 20px;
+            /* Adjusted animation duration to 2s for slower effect */
+            transition: width 2s ease-in-out;
+        }
+        
+        /* Cinematic Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+            opacity: 0.3;
+            z-index: 9999;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+        
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0) }
+            10% { transform: translate(-5%, -5%) }
+            20% { transform: translate(-10%, 5%) }
+            30% { transform: translate(5%, -10%) }
+            40% { transform: translate(-5%, 15%) }
+            50% { transform: translate(-10%, 5%) }
+            60% { transform: translate(15%, 0) }
+            70% { transform: translate(0, 10%) }
+            80% { transform: translate(-15%, 0) }
+            90% { transform: translate(10%, 5%) }
+        }
+        
+        /* Premium Buttons */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-bronze));
+            z-index: -1;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--color-bronze), var(--color-gold));
+            z-index: -1;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .btn-primary:hover::before {
+            transform: translateY(-100%);
+        }
+        
+        .btn-primary:hover::after {
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(201, 169, 97, 0.4);
+        }
+        
+        /* Outline Button */
+        .btn-outline {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--color-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+        }
+        
+        .btn-outline:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .btn-outline:hover {
+            color: var(--color-obsidian);
+            border-color: var(--color-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(201, 169, 97, 0.3);
+        }
+        
+        /* Text Reveal Animation */
+        .text-reveal {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+        
+        .text-reveal span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+        
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stagger delays */
+        .text-reveal span:nth-child(1) { animation-delay: 0.1s; }
+        .text-reveal span:nth-child(2) { animation-delay: 0.2s; }
+        .text-reveal span:nth-child(3) { animation-delay: 0.3s; }
+        .text-reveal span:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Luxury Card Hover */
+        .luxury-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(201,169,97,0.15), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .luxury-card:hover::before {
+            opacity: 1;
+        }
+        
+        .luxury-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(201,169,97,0.25);
+        }
+        
+        /* Image Hover Effect */
+        .image-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-reveal img {
+            transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: grayscale(100%) brightness(0.6);
+        }
+        
+        .image-reveal:hover img {
+            transform: scale(1.15);
+            filter: grayscale(0%) brightness(1);
+        }
+        
+        .image-reveal::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(201,169,97,0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .image-reveal:hover::after {
+            opacity: 1;
+        }
+        
+        /* Ornamental Divider */
+        .ornamental-divider {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0.3;
+        }
+        
+        .ornamental-divider::before,
+        .ornamental-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        }
+        
+        .ornamental-divider span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--color-gold);
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Menu Transition */
+        .menu-enter {
+            animation: menuSlide 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        @keyframes menuSlide {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Hide Scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Backdrop Blur */
+        .glass-effect {
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+        }
+        
+        /* Fade In on Scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), 
+                        transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Shimmer Line */
+        .shimmer-line {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shimmer-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201,169,97,0.6), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            to {
+                left: 100%;
+            }
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        /* Parallax */
+        .parallax {
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        /* Testimonial Slider */
+        .testimonial-slider {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+        
+        .testimonial-slide {
+            scroll-snap-align: start;
+        }
+        
+        /* Image Gallery Hover */
+        .gallery-item {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Number Counter */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .count-up {
+            animation: countUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- PRELOADER SECTION -->
+    <div id="preloader">
+        <div class="text-center">
+            <h2 class="font-bodoni text-4xl md:text-6xl italic text-[var(--color-gold)] tracking-widest animate-pulse">EXECUTIVE</h2>
+            <p class="font-cinzel text-[10px] tracking-[0.8em] text-[var(--color-silver)] mt-4">MOTORS LTD</p>
+            <div class="loader-line" id="loaderLine"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-700">
+        <div class="px-8 md:px-20 py-8 flex justify-between items-center">
+            <!-- Left Menu -->
+            <button id="menuToggle" class="group flex items-center gap-6 transition-all duration-500">
+                <div class="flex flex-col gap-2">
+                    <span class="w-12 h-[1px] bg-gradient-to-r from-[var(--color-gold)] to-transparent transition-all duration-500 group-hover:w-16"></span>
+                    <span class="w-8 h-[1px] bg-gradient-to-r from-[var(--color-gold)] to-transparent transition-all duration-500 group-hover:w-12"></span>
+                </div>
+                <span class="font-cinzel text-[10px] tracking-[0.5em] text-[var(--color-gold)] hidden md:block transition-all duration-500 group-hover:tracking-[0.6em]">MENU</span>
+            </button>
+            
+            <!-- Center Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2">
+                <a href="/" class="block">
+                    <img src="https://meghna-executive.com/images/static/logo.svg" alt="BMW" class="h-12 md:h-16 opacity-90 hover:opacity-100 transition-all duration-700 hover:scale-110">
+                </a>
+            </div>
+            
+            <!-- Right Contact -->
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex flex-col items-end">
+                    <span class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)] mb-1">CONCIERGE</span>
+                    <a href="tel:16765" class="font-bodoni text-xl tracking-wider hover:text-[var(--color-gold)] transition-all duration-500">16765</a>
+                </div>
+                <a href="#models" class="hidden md:block px-10 py-4 border border-[var(--color-gold)]/30 hover:border-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-all duration-700">
+                    <span class="font-cinzel text-[9px] tracking-[0.4em]">EXPLORE</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fullscreen Menu -->
+    <div id="fullscreenMenu" class="fixed inset-0 bg-[var(--color-obsidian)] z-[60] hidden">
+        <div class="h-full flex flex-col md:flex-row">
+            <!-- Left Side - Navigation -->
+            <div class="w-full md:w-1/2 flex flex-col justify-center px-12 md:px-24 py-20">
+                <button id="closeMenu" class="absolute top-10 right-10 text-4xl text-[var(--color-gold)] hover:rotate-90 transition-transform duration-700 z-[70]">×</button>
+                
+                <div class="ornamental-divider mb-16">
+                    <span>NAVIGATION</span>
+                </div>
+                
+                <nav class="space-y-8">
+                    <a href="#overview" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">01</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Overview</h3>
+                        </div>
+                    </a>
+                    <a href="#heritage" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">02</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Heritage</h3>
+                        </div>
+                    </a>
+                    <a href="#experience" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">03</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Experience</h3>
+                        </div>
+                    </a>
+                    <a href="#models" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">04</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Collection</h3>
+                        </div>
+                    </a>
+                    <a href="#testimonials" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">05</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Testimonials</h3>
+                        </div>
+                    </a>
+                    <a href="#sustainability" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">06</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Future</h3>
+                        </div>
+                    </a>
+                    <a href="#contact" class="menu-item group block">
+                        <div class="flex items-center gap-8">
+                            <span class="font-cinzel text-sm text-[var(--color-gold)]/30 group-hover:text-[var(--color-gold)] transition-all duration-500">07</span>
+                            <h3 class="font-bodoni text-5xl md:text-7xl italic hover:translate-x-4 transition-all duration-700">Contact</h3>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- Right Side - Featured Image -->
+            <div class="hidden md:block w-1/2 relative overflow-hidden">
+                <img src="https://cms.meghna-executive.com/admin/uploads/unit/executive-motors-ltd/17331329886L6sQ.jpg" alt="BMW Showroom" class="w-full h-full object-cover opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-obsidian)] via-transparent to-transparent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-50">
+            <source src="https://cms.meghna-executive.com/admin/uploads/unit/executive-motors-ltd/1730269855Bbrcn.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[var(--color-obsidian)]"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-7xl mx-auto">
+            <div class="mb-8 text-reveal">
+                <span class="font-cinzel text-[10px] tracking-[0.5em] text-[var(--color-gold)]">MEGHNA EXECUTIVE HOLDINGS</span>
+            </div>
+            
+            <h1 class="font-bodoni text-7xl md:text-[140px] lg:text-[180px] italic leading-none mb-6">
+                <div class="text-reveal inline-block">
+                    <span>Executive</span>
+                </div>
+                <br>
+                <div class="text-reveal inline-block">
+                    <span>Motors</span>
+                </div>
+            </h1>
+            
+            <div class="ornamental-divider max-w-xl mx-auto mb-12">
+                <span>EST. 2002</span>
+            </div>
+            
+            <p class="font-garamond text-xl md:text-2xl italic text-[var(--color-silver)] mb-16 max-w-3xl mx-auto">
+                Bangladesh's Gateway to Automotive Excellence
+            </p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="#models" class="btn-primary px-14 py-5 text-[var(--color-obsidian)] font-cinzel text-[10px] tracking-[0.4em] font-bold">
+                    DISCOVER COLLECTION
+                </a>
+                <a href="#contact" class="btn-outline px-14 py-5 border-2 border-[var(--color-gold)]/50 font-cinzel text-[10px] tracking-[0.4em] font-bold relative z-0">
+                    SCHEDULE VISIT
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-bounce">
+            <span class="font-cinzel text-[8px] tracking-[0.5em] text-[var(--color-gold)]">SCROLL</span>
+            <div class="w-[1px] h-16 bg-gradient-to-b from-[var(--color-gold)] to-transparent shimmer-line"></div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-charcoal)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-20 items-start">
+                <div class="sticky top-32">
+                    <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">01 — EXCELLENCE</span>
+                    <h2 class="font-bodoni text-5xl md:text-7xl italic mb-8 leading-tight">Engineering<br>Perfection</h2>
+                    <div class="w-24 h-[1px] bg-gradient-to-r from-[var(--color-gold)] to-transparent shimmer-line"></div>
+                </div>
+                
+                <div class="space-y-12">
+                    <p class="font-garamond text-3xl md:text-4xl leading-relaxed italic text-[var(--color-pearl)]/90">
+                        As Bangladesh's exclusive BMW importer since 2002, we have redefined luxury automotive experiences through unwavering commitment to excellence.
+                    </p>
+                    
+                    <div class="glass-effect p-12 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30 transition-all duration-700">
+                        <p class="font-garamond text-xl italic text-[var(--color-silver)] mb-8 leading-relaxed">
+                            "In 2023, we unveiled the BMW Retail.Next showroom at Meghna Tower — a masterpiece of automotive retail where innovation meets tradition."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full border border-[var(--color-gold)]/30 flex items-center justify-center">
+                                <span class="font-cinzel text-[10px] text-[var(--color-gold)]">EML</span>
+                            </div>
+                            <span class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)]/60">RETAIL.NEXT CONCEPT</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.bmw.com.bd/" target="_blank" class="inline-flex items-center gap-6 group">
+                        <span class="font-cinzel text-[10px] tracking-[0.4em] border-b border-[var(--color-gold)]/30 group-hover:border-[var(--color-gold)] pb-2 transition-all duration-500">VISIT BMW BANGLADESH</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage Section -->
+    <section id="heritage" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-obsidian)] relative overflow-hidden fade-in-section">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-20 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl floating"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-[var(--color-gold)]/5 blur-3xl floating" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 image-reveal">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop" alt="BMW Heritage" class="w-full h-[600px] object-cover">
+                    
+                    <div class="mt-12 glass-effect p-8 border border-[var(--color-gold)]/10 inline-block hover:border-[var(--color-gold)]/30 transition-all duration-700">
+                        <div class="font-bodoni text-6xl mb-2">20<span class="text-[var(--color-gold)]">+</span></div>
+                        <div class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-gold)]">YEARS OF EXCELLENCE</div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 space-y-12">
+                    <div>
+                        <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">02 — OUR JOURNEY</span>
+                        <h2 class="font-bodoni text-6xl md:text-8xl italic leading-none mb-8">
+                            A Legacy of<br>
+                            <span class="text-[var(--color-gold)]">Innovation</span>
+                        </h2>
+                    </div>
+                    
+                    <p class="font-garamond text-xl leading-relaxed text-[var(--color-silver)]">
+                        From our inception as Bangladesh's exclusive BMW importer, Executive Motors Ltd has been synonymous with precision, luxury, and unparalleled service. We don't just sell automobiles — we curate experiences.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 pt-8">
+                        <div class="border-l-2 border-[var(--color-gold)]/30 pl-6 hover:border-[var(--color-gold)] transition-all duration-500">
+                            <div class="font-cinzel text-3xl mb-2">1<sup class="text-[var(--color-gold)]">st</sup></div>
+                            <div class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)]/60">EXCLUSIVE IMPORTER</div>
+                        </div>
+                        <div class="border-l-2 border-[var(--color-gold)]/30 pl-6 hover:border-[var(--color-gold)] transition-all duration-500">
+                            <div class="font-bodoni text-2xl italic mb-2">Retail.Next</div>
+                            <div class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)]/60">EXPERIENCE CENTER</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience/Stats Section -->
+    <section id="experience" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-charcoal)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">03 — BY THE NUMBERS</span>
+                <h2 class="font-bodoni text-6xl md:text-8xl italic">Excellence in Numbers</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="glass-effect p-12 text-center hover:bg-[var(--color-gold)]/5 transition-all duration-700 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30">
+                    <div class="font-bodoni text-6xl mb-4 stat-number">500<span class="text-[var(--color-gold)]">+</span></div>
+                    <div class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-silver)]">SATISFIED CUSTOMERS</div>
+                </div>
+                
+                <div class="glass-effect p-12 text-center hover:bg-[var(--color-gold)]/5 transition-all duration-700 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30">
+                    <div class="font-bodoni text-6xl mb-4 stat-number">15<span class="text-[var(--color-gold)]">+</span></div>
+                    <div class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-silver)]">BMW MODELS</div>
+                </div>
+                
+                <div class="glass-effect p-12 text-center hover:bg-[var(--color-gold)]/5 transition-all duration-700 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30">
+                    <div class="font-bodoni text-6xl mb-4 stat-number">24<span class="text-[var(--color-gold)]">/7</span></div>
+                    <div class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-silver)]">CONCIERGE SERVICE</div>
+                </div>
+                
+                <div class="glass-effect p-12 text-center hover:bg-[var(--color-gold)]/5 transition-all duration-700 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30">
+                    <div class="font-bodoni text-6xl mb-4 stat-number">100<span class="text-[var(--color-gold)]">%</span></div>
+                    <div class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-silver)]">GENUINE PARTS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section id="models" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-pearl)] text-[var(--color-obsidian)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-bronze)] mb-8 block">04 — THE COLLECTION</span>
+                <h2 class="font-bodoni text-6xl md:text-8xl italic mb-8">BMW Models</h2>
+                <div class="ornamental-divider max-w-xl mx-auto mb-12">
+                    <span style="color: var(--color-bronze);">DISCOVER</span>
+                </div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-4 mb-20 flex-wrap">
+                <button class="filter-btn btn-outline px-10 py-5 border-2 border-[var(--color-obsidian)]/20 font-cinzel text-[9px] tracking-[0.3em] transition-all duration-700 hover:bg-[var(--color-obsidian)] hover:text-[var(--color-pearl)] bg-[var(--color-obsidian)] text-[var(--color-pearl)] font-bold relative z-0" data-filter="all">ALL</button>
+                <button class="filter-btn btn-outline px-10 py-5 border-2 border-[var(--color-obsidian)]/20 font-cinzel text-[9px] tracking-[0.3em] transition-all duration-700 hover:bg-[var(--color-obsidian)] hover:text-[var(--color-pearl)] font-bold relative z-0" data-filter="petrol">PETROL</button>
+                <button class="filter-btn btn-outline px-10 py-5 border-2 border-[var(--color-obsidian)]/20 font-cinzel text-[9px] tracking-[0.3em] transition-all duration-700 hover:bg-[var(--color-obsidian)] hover:text-[var(--color-pearl)] font-bold relative z-0" data-filter="electric">ELECTRIC</button>
+                <button class="filter-btn btn-outline px-10 py-5 border-2 border-[var(--color-obsidian)]/20 font-cinzel text-[9px] tracking-[0.3em] transition-all duration-700 hover:bg-[var(--color-obsidian)] hover:text-[var(--color-pearl)] font-bold relative z-0" data-filter="hybrid">HYBRID</button>
+            </div>
+            
+            <!-- Cars Grid -->
+            <div id="carGrid" class="grid md:grid-cols-3 gap-12 mb-20">
+                <!-- Loaded via JS -->
+            </div>
+            
+            <div class="text-center">
+                <a href="https://www.bmw.com.bd/models/" class="btn-outline inline-block px-16 py-6 border-2 border-[var(--color-obsidian)] transition-all duration-700 relative z-0 font-bold">
+                    <span class="font-cinzel text-[10px] tracking-[0.4em]">VIEW ENTIRE FLEET</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-obsidian)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">05 — CLIENT EXPERIENCES</span>
+                <h2 class="font-bodoni text-6xl md:text-8xl italic">What Our Clients Say</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-effect p-12 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30 transition-all duration-700">
+                    <div class="mb-6">
+                        <span class="text-[var(--color-gold)] text-4xl">★★★★★</span>
+                    </div>
+                    <p class="font-garamond text-lg italic text-[var(--color-silver)] mb-8 leading-relaxed">
+                        "Executive Motors transformed my perception of luxury. The Retail.Next showroom is absolutely stunning, and service is impeccable."
+                    </p>
+                    <div class="font-cinzel text-[10px] tracking-[0.4em] text-[var(--color-gold)]">— RAHMAN A.</div>
+                </div>
+                
+                <div class="glass-effect p-12 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30 transition-all duration-700">
+                    <div class="mb-6">
+                        <span class="text-[var(--color-gold)] text-4xl">★★★★★</span>
+                    </div>
+                    <p class="font-garamond text-lg italic text-[var(--color-silver)] mb-8 leading-relaxed">
+                        "Purchasing my BMW i7 was seamless. The team's expertise and attention to detail exceeded all expectations."
+                    </p>
+                    <div class="font-cinzel text-[10px] tracking-[0.4em] text-[var(--color-gold)]">— NASRIN K.</div>
+                </div>
+                
+                <div class="glass-effect p-12 border border-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30 transition-all duration-700">
+                    <div class="mb-6">
+                        <span class="text-[var(--color-gold)] text-4xl">★★★★★</span>
+                    </div>
+                    <p class="font-garamond text-lg italic text-[var(--color-silver)] mb-8 leading-relaxed">
+                        "From consultation to delivery, every step was perfect. This is standard for luxury automotive retail in Bangladesh."
+                    </p>
+                    <div class="font-cinzel text-[10px] tracking-[0.4em] text-[var(--color-gold)]">— KARIM S.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability -->
+    <section id="sustainability" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-charcoal)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">06 — THE FUTURE</span>
+                <h2 class="font-bodoni text-6xl md:text-9xl italic leading-none mb-8">
+                    Electric<br>
+                    <span class="text-[var(--color-gold)]">Era</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-px bg-[var(--color-gold)]/10">
+                <div class="bg-[var(--color-charcoal)] p-16 hover:bg-[var(--color-obsidian)] transition-all duration-700">
+                    <div class="w-16 h-16 rounded-full border-2 border-[var(--color-gold)]/30 flex items-center justify-center font-cinzel text-lg mb-8 hover:border-[var(--color-gold)] transition-all duration-500">01</div>
+                    <h3 class="font-bodoni text-3xl italic mb-6">Circular Economy</h3>
+                    <p class="font-garamond text-[var(--color-silver)] leading-relaxed">
+                        BMW i models are built with up to 95% recyclable materials, ensuring sustainability from beginning to end.
+                    </p>
+                </div>
+                
+                <div class="bg-[var(--color-charcoal)] p-16 hover:bg-[var(--color-obsidian)] transition-all duration-700">
+                    <div class="w-16 h-16 rounded-full border-2 border-[var(--color-gold)]/30 flex items-center justify-center font-cinzel text-lg mb-8 hover:border-[var(--color-gold)] transition-all duration-500">02</div>
+                    <h3 class="font-bodoni text-3xl italic mb-6">Green Energy</h3>
+                    <p class="font-garamond text-[var(--color-silver)] leading-relaxed">
+                        Our facilities are optimized for maximum energy efficiency with solar integration.
+                    </p>
+                </div>
+                
+                <div class="bg-[var(--color-charcoal)] p-16 hover:bg-[var(--color-obsidian)] transition-all duration-700">
+                    <div class="w-16 h-16 rounded-full border-2 border-[var(--color-gold)]/30 flex items-center justify-center font-cinzel text-lg mb-8 hover:border-[var(--color-gold)] transition-all duration-500">03</div>
+                    <h3 class="font-bodoni text-3xl italic mb-6">i-Performance</h3>
+                    <p class="font-garamond text-[var(--color-silver)] leading-relaxed">
+                        Leading Bangladesh with the most diverse range of premium fully-electric vehicles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-obsidian)] fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">SHOWROOM</span>
+                <h2 class="font-bodoni text-6xl md:text-8xl italic">Retail.Next Experience</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="gallery-item image-reveal h-[400px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Showroom" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item image-reveal h-[400px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1567818735868-e71b99932e29?q=80&w=2070&auto=format&fit=crop" alt="Interior" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item image-reveal h-[400px] overflow-hidden md:col-span-2">
+                    <img src="https://cms.meghna-executive.com/admin/uploads/unit/executive-motors-ltd/1733136390tEtHV.jpg" alt="BMW i7" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 md:py-48 px-6 md:px-20 bg-[var(--color-charcoal)] fade-in-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="font-cinzel text-[9px] tracking-[0.5em] text-[var(--color-gold)] mb-8 block">07 — GET IN TOUCH</span>
+                <h2 class="font-bodoni text-5xl md:text-7xl italic mb-8">Begin Your Journey</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-20">
+                <div class="space-y-12">
+                    <div>
+                        <span class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)] mb-4 block">LOCATION</span>
+                        <p class="font-garamond text-lg leading-relaxed">
+                            187-188 B, Forum Meghna Tower<br>
+                            Bir Uttam Mir Shawkat Sarak<br>
+                            Tejgaon-Gulshan Link Road<br>
+                            Dhaka, Bangladesh
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <span class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)] mb-4 block">PHONE</span>
+                            <a href="tel:16765" class="font-bodoni text-4xl hover:text-[var(--color-gold)] transition-all duration-500">16765</a>
+                        </div>
+                        <div>
+                            <span class="font-cinzel text-[8px] tracking-[0.4em] text-[var(--color-gold)] mb-4 block">EMAIL</span>
+                            <a href="mailto:info@bmw.com.bd" class="font-garamond text-lg hover:text-[var(--color-gold)] transition-all duration-500">info@bmw.com.bd</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="space-y-8">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full bg-transparent border-b-2 border-[var(--color-gold)]/20 py-4 font-garamond text-lg focus:border-[var(--color-gold)] outline-none transition-all duration-500">
+                    <input type="email" name="email" placeholder="Email Address" required class="w-full bg-transparent border-b-2 border-[var(--color-gold)]/20 py-4 font-garamond text-lg focus:border-[var(--color-gold)] outline-none transition-all duration-500">
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="w-full bg-transparent border-b-2 border-[var(--color-gold)]/20 py-4 font-garamond text-lg focus:border-[var(--color-gold)] outline-none transition-all duration-500">
+                    <textarea name="message" placeholder="Your Message" rows="4" class="w-full bg-transparent border-b-2 border-[var(--color-gold)]/20 py-4 font-garamond text-lg focus:border-[var(--color-gold)] outline-none resize-none transition-all duration-500"></textarea>
+                    
+                    <button type="submit" class="btn-primary w-full md:w-auto px-16 py-6 text-[var(--color-obsidian)] font-cinzel text-[10px] tracking-[0.4em] font-bold">
+                        SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 md:px-20 bg-[var(--color-obsidian)] border-t border-[var(--color-gold)]/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <img src="https://meghna-executive.com/images/static/logo-v2.svg" alt="Executive Motors" class="h-12 mb-8 opacity-80 hover:opacity-100 transition-all duration-500">
+                    <p class="font-garamond text-[var(--color-silver)] leading-relaxed max-w-md">
+                        Executive Motors Ltd. is exclusive gateway to BMW luxury in Bangladesh, defining future of premium automotive experiences.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-gold)] mb-6">QUICK LINKS</h4>
+                    <ul class="space-y-3 font-garamond">
+                        <li><a href="#models" class="hover:text-[var(--color-gold)] transition-all duration-500">Our Fleet</a></li>
+                        <li><a href="#heritage" class="hover:text-[var(--color-gold)] transition-all duration-500">Our Story</a></li>
+                        <li><a href="#contact" class="hover:text-[var(--color-gold)] transition-all duration-500">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-[var(--color-gold)] mb-6">FOLLOW US</h4>
+                    <ul class="space-y-3 font-garamond">
+                        <li><a href="#" class="hover:text-[var(--color-gold)] transition-all duration-500">Facebook</a></li>
+                        <li><a href="#" class="hover:text-[var(--color-gold)] transition-all duration-500">Instagram</a></li>
+                        <li><a href="#" class="hover:text-[var(--color-gold)] transition-all duration-500">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-[var(--color-gold)]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-cinzel text-[8px] tracking-[0.3em] text-[var(--color-silver)]">© 2024 MEGHNA EXECUTIVE HOLDINGS</p>
+                <a href="https://sayeed62135.github.io/mohammadsayeed/" target="_blank" class="font-cinzel text-[8px] tracking-[0.3em] text-[var(--color-gold)] hover:underline transition-all duration-500">SITE BY Mohammad Sayeed</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // PRELOADER LOGIC
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const loaderLine = document.getElementById('loaderLine');
+            
+            // Animate loader line to full width
+            if (loaderLine) {
+                loaderLine.style.width = '100%';
+            }
+            
+            // INCREASED DELAY from 500ms to 2500ms (2.5 seconds)
+            setTimeout(() => {
+                if (preloader) {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 1000); // Wait for transition to finish
+                }
+            }, 2500);
+        });
+
+        // MAIN SCRIPT
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Initialize Lucide Icons
+            try {
+                lucide.createIcons();
+            } catch (e) {
+                console.log('Lucide icons library not loaded yet or error.');
+            }
+
+            // BMW Models Data
+            const BMW_MODELS = [
+                {
+                    id: 1,
+                    name: 'BMW 3 Series',
+                    type: 'Plug-in Hybrid',
+                    category: 'hybrid',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/demo/1733137476XwDBI.webp',
+                    link: 'https://www.bmw.com.bd/models/bmw-3-series-sedan-overview/'
+                },
+                {
+                    id: 2,
+                    name: 'BMW i5',
+                    type: 'Full-Electric',
+                    category: 'electric',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/bmw-i5/17331435906GDCI.png',
+                    link: 'https://www.bmw.com.bd/models/bmw-i5/'
+                },
+                {
+                    id: 3,
+                    name: 'BMW 7 Series',
+                    type: 'Petrol',
+                    category: 'petrol',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/bmw7-series-sedan/17331386569UqDM.webp',
+                    link: 'https://www.bmw.com.bd/models/bmw-7-series-sedan-highlights/'
+                },
+                {
+                    id: 4,
+                    name: 'BMW i7',
+                    type: 'Full-Electric',
+                    category: 'electric',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/bmw-i7/1733142051A58xU.webp',
+                    link: 'https://www.bmw.com.bd/models/the-new-i7'
+                },
+                {
+                    id: 5,
+                    name: 'BMW X1',
+                    type: 'Petrol',
+                    category: 'petrol',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/bmw-x1/1733141628tFgau.webp',
+                    link: 'https://www.bmw.com.bd/models/the-new-x1/'
+                },
+                {
+                    id: 6,
+                    name: 'BMW iX3',
+                    type: 'Full-Electric',
+                    category: 'electric',
+                    image: 'https://cms.meghna-executive.com/admin/uploads/brandproduct/bmw-ix31/1733142454kqXfn.webp',
+                    link: 'https://www.bmw.com.bd/models/bmw-ix3-highlights/'
+                }
+            ];
+
+            // --- MENU LOGIC ---
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    fullscreenMenu.classList.remove('hidden');
+                    fullscreenMenu.classList.add('menu-enter');
+                });
+            }
+
+            if (closeMenu) {
+                closeMenu.addEventListener('click', () => {
+                    fullscreenMenu.classList.add('hidden');
+                    fullscreenMenu.classList.remove('menu-enter');
+                });
+            }
+
+            // Close menu when clicking links
+            if (menuItems) {
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        fullscreenMenu.classList.add('hidden');
+                        fullscreenMenu.classList.remove('menu-enter');
+                    });
+                });
+            }
+
+            // --- NAVBAR SCROLL EFFECT ---
+            const navbar = document.getElementById('navbar');
+            if(navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('glass-effect');
+                    } else {
+                        navbar.classList.remove('glass-effect');
+                    }
+                });
+            }
+
+            // --- CAR GRID RENDERING ---
+            const carGrid = document.getElementById('carGrid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            function renderCars(filter) {
+                if(!carGrid) return;
+                
+                const filtered = filter === 'all' ? BMW_MODELS : BMW_MODELS.filter(car => car.category === filter);
+                
+                carGrid.innerHTML = filtered.map(car => `
+                    <a href="${car.link}" target="_blank" class="luxury-card block bg-white text-[var(--color-obsidian)] overflow-hidden group">
+                        <div class="aspect-[4/3] overflow-hidden bg-gray-50 flex items-center justify-center p-8">
+                            <img src="${car.image}" alt="${car.name}" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-1000">
+                        </div>
+                        <div class="p-8">
+                            <span class="font-cinzel text-[8px] tracking-[0.3em] text-[var(--color-bronze)] block mb-4">${car.type}</span>
+                            <h3 class="font-bodoni text-3xl italic mb-4">${car.name}</h3>
+                            <div class="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                                <span class="font-cinzel text-[8px] tracking-[0.3em]">EXPLORE</span>
+                                <div class="w-12 h-[1px] bg-[var(--color-obsidian)] shimmer-line"></div>
+                            </div>
+                        </div>
+                    </a>
+                `).join('');
+            }
+
+            renderCars('all');
+
+            if(filterBtns.length > 0) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterBtns.forEach(b => {
+                            b.classList.remove('bg-[var(--color-obsidian)]', 'text-[var(--color-pearl)]');
+                        });
+                        btn.classList.add('bg-[var(--color-obsidian)]', 'text-[var(--color-pearl)]');
+                        renderCars(btn.dataset.filter);
+                    });
+                });
+            }
+
+            // --- CONTACT FORM ---
+            const contactForm = document.getElementById('contactForm');
+            if(contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
+                    contactForm.reset();
+                });
+            }
+
+            // --- SMOOTH SCROLL ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // --- FADE IN ON SCROLL ---
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
